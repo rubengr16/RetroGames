@@ -23,14 +23,38 @@
 -- -> SET FechaNacimiento = STR_TO_DATE(@FechaNacimientoProv, '%d/%m/%Y'),
 -- -> FechaContacto = STR_TO_DATE(@FechaContactoProv, '%d/%m/%Y');
 
+-- Creation of a Procedure with a Cursor which deletes accents and ñ:
+-- In case of time-out: Edit > Preferences... > SQL Editor 
+-- and Modify the interval values.
+DELIMITER $$
+CREATE PROCEDURE REPLACE_SPANISH()
+BEGIN
+	DECLARE done INT DEFAULT FALSE;
+    DECLARE id INT;
+    DECLARE mail VARCHAR(60);
+	DECLARE cur CURSOR FOR SELECT ClienteID, Email FROM Clientes; -- Creación
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+	OPEN cur; -- Apertura
+	read_loop: LOOP
+		FETCH cur INTO id, mail;
+		SET mail = REPLACE(mail, 'á', 'a');
+        SET mail = REPLACE(mail, 'é', 'e');
+        SET mail = REPLACE(mail, 'í', 'i');
+        SET mail = REPLACE(mail, 'ó', 'o');
+        SET mail = REPLACE(mail, 'ú', 'u');
+        SET mail = REPLACE(mail, 'ñ', 'n');
+		UPDATE Clientes
+        SET Email = mail
+        WHERE Clientes.ClienteID = id;
+		IF done THEN
+			LEAVE read_loop;
+		END IF;
+	END LOOP;
+	CLOSE cur; -- Cierre
+END$$
+DELIMITER ;
 
+-- Procedure execution:
+CALL REPLACE_SPANISH();
 
- 
-
-SELECT COUNT(*)
-FROM ClientesFromCSV;
-USE PracABD1;
-SELECT REPLACE(Clientes.Email, 'í', 'i');
-SELECT *
-FROM Clientes;
-DROP TABLE clientes;
+-- DROP PROCEDURE REPLACE_SPANISH;
