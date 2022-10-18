@@ -13,19 +13,30 @@
 -- -> SHOW GLOBAL VARIABLES LIKE 'local_infile';
 -- If it is in OFF, set it ON:
 -- -> SET GLOBAL local_infile=1;
+-- Select database:
+-- USE <database_name>;
 -- And later:
 -- -> LOAD DATA LOCAL INFILE '<file_name>'
 -- -> INTO TABLE <table_name>
 -- -> CHARACTER SET latin1
 -- -> FIELDS TERMINATED BY '\t'
 -- -> LINES TERMINATED BY '\n'
--- ->(ClienteID, DNI, Nombre, Apellidos, Genero, Direccion, Localidad, Provincia, CodPostal, Telefono, Canal, @FechaNacimientoProv, @FechaContactoProv, @EmailProv)
+-- ->(<column_name1>[, <column_name2>, [<prov_var1>] ...])
+-- -> [SET <column_name1> = <prov_var1>,
+-- -> ...,
+-- -> MODIFICATIONS OF <prov_varn> COULD BE MADE HERE,
+-- -> ...];
+
+-- -> LOAD DATA LOCAL INFILE '//tsclient/E/Uni/ABD/RetroGames/DATOS/Clientes.csv'
+-- -> INTO TABLE Clientes
+-- -> CHARACTER SET latin1
+-- -> FIELDS TERMINATED BY '\t'
+-- -> LINES TERMINATED BY '\n'
+-- ->(ClienteID, DNI, Nombre, Apellidos, Genero, Direccion, Localidad, Provincia, CodPostal, Telefono, Canal, @FechaNacimientoProv, @FechaContactoProv, Email)
 -- -> SET FechaNacimiento = STR_TO_DATE(@FechaNacimientoProv, '%d/%m/%Y'),
 -- -> FechaContacto = STR_TO_DATE(@FechaContactoProv, '%d/%m/%Y');
 
 -- Creation of a Procedure with a Cursor which deletes accents and ñ:
--- In case of time-out: Edit > Preferences... > SQL Editor 
--- and Modify the interval values.
 DELIMITER $$
 CREATE PROCEDURE REPLACE_SPANISH()
 BEGIN
@@ -55,6 +66,8 @@ END$$
 DELIMITER ;
 
 -- Procedure execution:
+-- DISCLAIMER: In case of time-out: Edit > Preferences... > SQL Editor 
+-- and Modify the interval values.
 CALL REPLACE_SPANISH();
 
 -- DROP PROCEDURE REPLACE_SPANISH;
