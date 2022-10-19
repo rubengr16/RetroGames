@@ -32,7 +32,7 @@
 -- -> CHARACTER SET latin1
 -- -> FIELDS TERMINATED BY '\t'
 -- -> LINES TERMINATED BY '\n'
--- ->(ClienteID, DNI, Nombre, Apellidos, Genero, Direccion, Localidad, Provincia, CodPostal, Telefono, Canal, @FechaNacimientoProv, @FechaContactoProv, Email)
+-- -> (ClienteID, DNI, Nombre, Apellidos, Genero, Direccion, Localidad, Provincia, CodPostal, Telefono, Canal, @FechaNacimientoProv, @FechaContactoProv, Email)
 -- -> SET FechaNacimiento = STR_TO_DATE(@FechaNacimientoProv, '%d/%m/%Y'),
 -- -> FechaContacto = STR_TO_DATE(@FechaContactoProv, '%d/%m/%Y');
 
@@ -67,7 +67,7 @@ DELIMITER ;
 
 -- Procedure execution:
 -- DISCLAIMER: In case of time-out: Edit > Preferences... > SQL Editor 
--- and Modify the interval values.
+-- and Modify the interval values to 0, 0, 600000.
 CALL REPLACE_SPANISH();
 
 -- DROP PROCEDURE REPLACE_SPANISH;
