@@ -22,7 +22,7 @@
 -- -> FIELDS TERMINATED BY '\t'
 -- -> LINES TERMINATED BY '\n'
 -- ->(<column_name1>[, <column_name2>, [<prov_var1>] ...])
--- -> [SET <column_name1> = <prov_var1>,
+-- -> SET <column_name1> = <prov_var1>[,
 -- -> ...,
 -- -> MODIFICATIONS OF <prov_varn> COULD BE MADE HERE,
 -- -> ...];

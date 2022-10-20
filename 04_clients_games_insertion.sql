@@ -15,7 +15,7 @@
 -- -> CHARACTER SET latin1
 -- -> FIELDS TERMINATED BY '\t'
 -- -> LINES TERMINATED BY '\n'
--- ->(<column_name1>[, <column_name2>, [<prov_var1>] ...])
+-- -> (<column_name1>[, <column_name2>, [<prov_var1>] ...])
 -- -> [SET <column_name1> = <prov_var1>,
 -- -> ...,
 -- -> MODIFICATIONS OF <prov_varn> COULD BE MADE HERE,
@@ -27,5 +27,5 @@
 -- -> CHARACTER SET latin1
 -- -> FIELDS TERMINATED BY '\t'
 -- -> LINES TERMINATED BY '\n'
--- ->(ClienteID, JuegoID, @FechaAlquilerProv, Comentarios)
+-- -> (ClienteID, JuegoID, @FechaAlquilerProv, Comentarios)
 -- -> SET FechaAlquiler = STR_TO_DATE(@FechaAlquilerProv, '%d/%m/%Y');

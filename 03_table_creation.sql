@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS Clientes (
     
 CREATE TABLE IF NOT EXISTS Juegos (
 	JuegoID		INTEGER		UNIQUE	NOT NULL, -- Add AUTO_INCREMENT
-    Titulo		VARCHAR(32)	UNIQUE	NOT NULL, -- Change to VARCHAR(128)
+    Titulo		VARCHAR(32)	UNIQUE	NOT NULL, -- Change to VARCHAR(128), and delete UNIQUE
     Consola		VARCHAR(12)	NOT NULL,
     Tamanio		INTEGER,
     Editor		VARCHAR(32)
