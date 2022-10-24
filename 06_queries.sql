@@ -29,5 +29,40 @@ WHERE Canal = '4' AND
 -- por apellidos y contener solo clientes que sean de una determinada provincia.
 -- Realiza las pruebas con los clientes de Madrid, que es el mercado que se está
 -- analizando.
+SELECT Nombre, Apellidos, Titulo, FechaAlquiler
+FROM (SELECT ClienteID, Nombre, Apellidos, Provincia
+	  FROM Clientes) AS C
+      INNER JOIN
+      (SELECT ClienteID, JuegoID, FechaAlquiler
+       FROM Clientes_Juegos) AS CJ
+	  ON C.ClienteID = CJ.ClienteID
+	  INNER JOIN
+      (SELECT JuegoID
+       FROM Juegos) AS J
+	  ON CJ.JuegoID = J.JuegoID
+WHERE FechaAlquiler BETWEEN '2019/01/01' AND '2020/12/31'
+	AND Provincia = 'MADRID'
+ORDER BY Apellidos;
+
 -- e. Realiza dos consultas que pienses que puedan ser de interés para la empresa y con
 -- las que puedas extraer alguna conclusión de interés relativa al uso de los índices.
+
+-- e1. Obtener el id, Titulo y consola de los juegos más alquilados.
+SELECT JuegoID, Titulo, Consola
+FROM Juegos AS J
+	 INNER JOIN
+     (SELECT JuegoID
+	  FROM Clientes_Juegos
+      WHERE COUNT(JuegoID) >= ALL (SELECT COUNT(JuegoID)
+							       FROM Clientes_Juegos)) AS CJ
+	 ON J.JuegoID = CJ.JuegoID;
+
+-- e2. Consultar los juegos que no ha alquilado un determinado cliente por su id para una
+-- determinada consola se desea conocer el id del juego y titulo. Por ejemplo, el cliente
+-- de id 90558 y consola GameBoy
+SELECT JuegoID, Titulo
+FROM Juegos
+WHERE JuegoID NOT IN (SELECT JuegoID
+					  FROM Clientes_Juegos
+                      WHERE ClienteID = 90558)
+	AND Consola = 'GameBoy';

@@ -29,3 +29,13 @@
 -- -> LINES TERMINATED BY '\n'
 -- -> (ClienteID, JuegoID, @FechaAlquilerProv, Comentarios)
 -- -> SET FechaAlquiler = STR_TO_DATE(@FechaAlquilerProv, '%d/%m/%Y');
+
+-- ATENTION: to detect ghost rows, we can use the following query:
+SELECT DISTINCT(JuegoID)
+FROM Clientes_Juegos
+WHERE JuegoID NOT IN (SELECT JuegoID
+                      FROM Juegos);
+
+-- Ghost rows deletion:
+-- DELETE FROM Clientes_Juegos
+-- WHERE JuegoID = 14105;
