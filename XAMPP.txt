@@ -1,0 +1,14 @@
+XAMPP Initial Configurations
+
+NOTE: XAMPP and MySQL server is supposed to be installed.
+
+1.1.1) Open xampp-control.exe
+1.1.2) Go to: Config > Service and Port Settings > MySQL
+1.1.3) Set Main Port to the desired one -different from 3306-, eg.: 3307 or 3309.
+
+1.2.1) Before opening xampp-control.exe, on the main folder of the application, edit xampp-control.exe.
+1.2.2) On line 69, under [ServicePorts], set MySQL to the desired one -different from 3306-, eg.: 3307 or 3309.
+1.2.3) Open xampp-control.exe.
+
+2) Go to: Config > my.ini.
+3) On line 29, under [mysqld], set port to the desired one -different from 3306-, eg.: 3307 or 3309.
