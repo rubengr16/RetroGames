@@ -54,6 +54,12 @@ BEGIN
         SET mail = REPLACE(mail, 'ó', 'o');
         SET mail = REPLACE(mail, 'ú', 'u');
         SET mail = REPLACE(mail, 'ñ', 'n');
+		SET mail = REPLACE(mail, 'Á', 'A');
+        SET mail = REPLACE(mail, 'É', 'E');
+        SET mail = REPLACE(mail, 'Í', 'I');
+        SET mail = REPLACE(mail, 'Ó', 'O');
+        SET mail = REPLACE(mail, 'Ú', 'U');
+        SET mail = REPLACE(mail, 'Ñ', 'N');
 		UPDATE Clientes
         SET Email = mail
         WHERE Clientes.ClienteID = id;
