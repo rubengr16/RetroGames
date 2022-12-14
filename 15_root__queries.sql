@@ -1,16 +1,16 @@
 -- root
 USE PracABD1;
 -- A.
--- A1. Obtener nombres y apellidos de clientes ordenados por provincia - 0s:
+-- A1. Obtener nombres y apellidos de clientes ordenados por provincia - 0.015s:
 SELECT Nombre, Apellidos
 FROM Clientes;
 
--- A2. Obtener el número de clientes de Sevilla - 0.047s:
+-- A2. Obtener el número de clientes de Sevilla - 0.125s:
 SELECT COUNT(*)
 FROM Clientes
 WHERE Provincia = 'SEVILLA';
 
--- A3. Obtener el email de los clientes de Barcelona - 0.062s:
+-- A3. Obtener el email de los clientes de Barcelona - 0.125s:
 SELECT Email
 FROM Clientes
 WHERE Provincia = 'BARCELONA';
@@ -20,7 +20,7 @@ INSERT INTO Clientes(ClienteID, DNI, Nombre, Apellidos, Genero, Direccion, Local
 VALUES ('999999', '999999R', 'Dani', 'Profe', 'H', 'Calle Despacho', 'Madrid', 'Madrid', 66666, '666666666', '0', '1973-01-29', '1987-11-18', 'dani@gmail.com');
 
 -- B.
--- B1. Obtener la información de los videojuegos ordenados por tamaño - 0.016s:
+-- B1. Obtener la información de los videojuegos ordenados por tamaño - 0.015s:
 SELECT *
 FROM Juegos
 WHERE Consola = 'GameBoy'
@@ -33,6 +33,6 @@ WHERE Consola = 'GameBoy' AND
 	Editor = 'Nintendo'
 ORDER BY Tamanio;
 
--- B3. Insertar nuevos videojuegos de GameBoy
+-- B3. Insertar nuevos videojuegos de GameBoy - 0.016s
 INSERT INTO Juegos(JuegoID, Titulo, Consola, Tamanio, Editor)
-VALUES ('444444', 'ROOT Game', 'GameBoy', '444', 'MyRoot');
+VALUES ('44444', 'ROOT Game', 'GameBoy', '444', 'MyRoot');
