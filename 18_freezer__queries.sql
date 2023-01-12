@@ -19,6 +19,11 @@ WHERE Provincia = 'BARCELONA';
 -- underlying table doesn't have a default value:
 INSERT INTO viewEssentialClientes(ClienteID, Nombre, Apellidos, Email)
 VALUES ('9999997', 'Freezer', 'New', 'freezer@gmail.com');
+-- OPTION 1: Special procedure to INSERT as Freezer:
+CALL INSERT_Clientes_FREEZER('9999997', 'Freezer', 'New', 'freezer@gmail.com');
+-- OPTION 2: After trigger creation:
+INSERT INTO viewEssentialClientes(ClienteID, Nombre, Apellidos, Email)
+VALUES ('9999997', 'Freezer', 'New', 'freezer@gmail.com');
 
 -- B.
 -- B1. Obtener la información de los videojuegos ordenados por tamaño - 0.000s:
@@ -34,4 +39,9 @@ ORDER BY Tamanio;
 
 -- B3. Insertar nuevos videojuegos de GameBoy: FAIL: Consola can't be accessed by freezer:
 INSERT INTO viewEssentialJuegos(JuegoID, Titulo, Tamanio, Editor)
-VALUES ('444445', 'FREEZER Game', '445', 'MyFreezer');
+VALUES ('777775', 'FREEZER Game', '445', 'MyFreezer');
+-- OPTION 1: Special procedure to INSERT as Freezer:
+CALL INSERT_Juegos_FREEZER('777775', 'FREEZER Game', '445', 'MyFreezer');
+-- OPTION 2: After trigger creation:
+INSERT INTO viewEssentialJuegos(JuegoID, Titulo, Tamanio, Editor)
+VALUES ('777775', 'ROOT Game', '444', 'MyRoot');

@@ -4,7 +4,7 @@ REVOKE dependiente FROM goku;
 -- Create user:
 CREATE ROLE torpe;
 -- Grant privilege:
-GRANT SELECT ON PracABD1.* TO goku;
+GRANT SELECT ON PracABD1.* TO torpe;
 -- Assign role to the users:
 GRANT torpe TO goku;
 -- Activate roles:

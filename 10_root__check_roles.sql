@@ -10,6 +10,8 @@ SHOW TABLES;
 -- WARNING: The catalog may not be updated and show outdated privilege types:
 SELECT *
 FROM USER_PRIVILEGES;
+SELECT *
+FROM TABLE_PRIVILEGES;
 
 -- OPTION 2: SHOW GRANTS FOR:
 -- gestor role and gohan user:
@@ -23,3 +25,5 @@ SHOW GRANTS FOR bidel;
 SHOW GRANTS FOR dependiente;
 SHOW GRANTS FOR trunks;
 SHOW GRANTS FOR goku;
+
+-- OPTION 3: Also possible in Administration > Users and Privileges > Select user!! > Schema Privileges || Administrative Roles.
