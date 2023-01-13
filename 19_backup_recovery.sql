@@ -14,13 +14,14 @@
 -- Backup
 -- Go to MySQL/bin, open a terminal and execute:
 -- mysqldump -u root -p pracabd1 > <path to>\recovery_<date>.sql
--- Modify recovery_<date>.sql by adding to the beginning:
+-- OPRTIONAL: Modify recovery_<date>.sql by adding to the beginning:
 -- CREATE DATABASE  IF NOT EXISTS `recovery_<date>` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 -- USE `recovery_<date>`;
 
 -- Recovery
 -- Go to MySQL/bin, open a terminal and execute:
--- login using mysql -u root -p
+-- login using:
+-- mysql -u root -p
 -- Later, execute the following statements:
 -- CREATE DATABASE recovery_<date>;
 -- Check the creation of the database:
